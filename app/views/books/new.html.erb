@@ -1,0 +1,18 @@
+ <% .notifications
+- flash.each do |key, value|
+ = content_tag(:div, value, class: key)%>
+
+<h1>New Book</h1>
+<!-- form_with部分 -->
+<%= form_with model:@book, local:true do |f| %>
+<%= render 'layouts/error_messages', model: f.object %>
+
+  <h4>Title</h4>
+  <%= f.text_field :title %>
+
+  <h4>Body</h4>
+  <%= f.text_area :body %>
+
+  <%= f.submit 'Create Book' %>
+
+<% end %>
