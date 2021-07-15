@@ -2,6 +2,13 @@
 - flash.each do |key, value|
  = content_tag(:div, value, class: key)%>
 
+ <% if @books.errors.any? %>
+  <%= @books.errors.count %>件のエラーが発生しました
+  <% @books.errors.full_messages.each do |message| %>
+    <%= message %>
+  <% end %>
+<% end %>
+
 <h1>New Book</h1>
 <!-- form_with部分 -->
 <%= form_with model:@book, local:true do |f| %>
